@@ -202,7 +202,11 @@ export function CounsellorForm({
     });
 
     const created = result as { counsellor?: Counsellor } | Counsellor | undefined;
-    const counsellorId = initial?._id || created?.counsellor?._id || (created as Counsellor)?._id;
+    const createdId =
+      created && 'counsellor' in created
+        ? created.counsellor?._id
+        : (created as Counsellor | undefined)?._id;
+    const counsellorId = initial?._id || createdId;
     if (pendingImage && counsellorId) {
       setImageUploading(true);
       try {

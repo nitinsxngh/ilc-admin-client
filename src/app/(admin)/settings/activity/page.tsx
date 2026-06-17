@@ -138,11 +138,12 @@ export default function ActivityLogsPage() {
                   </TBody>
                 </Table>
 
-                {pagination && pagination.pages > 1 && (
+                {pagination && (
                   <PaginationBar
                     page={pagination.page}
                     pages={pagination.pages}
                     total={pagination.total}
+                    limit={pagination.limit}
                     onPageChange={load}
                   />
                 )}
